@@ -7,6 +7,19 @@
 
 function heaviestBagPair(bagWeights) {
   // Start Coding Here
+  if (bagWeights.length < 2) return null + " เพราะมีกระเป๋าแค่ใบเดียว";
+
+  let maxWeights = 0;
+  let maxBagSet = [];
+
+  for (let i = 0; i < bagWeights.length - 1; i++) {
+    let currentWeight = bagWeights[i] + bagWeights[i + 1];
+    if (currentWeight > maxWeights) {
+      maxWeights = currentWeight
+      maxBagSet = [bagWeights[i], bagWeights[i + 1]]
+    }
+  }
+  return `${maxBagSet} เพราะเป็นคู่กระเป๋าที่หนักที่สุด (${maxWeights} กก.) `
 }
 
 console.log(heaviestBagPair([5, 8, 12, 15, 7]));
